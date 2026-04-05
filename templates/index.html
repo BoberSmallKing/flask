@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Support — Умная поддержка постаматов</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">AI<span>Postman</span></div>
+                <div class="nav-links">
+                    <a href="#">Решения</a>
+                    <a href="#">Преимущества</a>
+                    <a href="#" class="btn-primary">Связаться</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" alt="AI Support Terminal">
+                </div>
+                <div class="hero-content">
+                    <h1>Интеллектуальная поддержка ваших постаматов 24/7</h1>
+                    <p>Наш ИИ решает 90% обращений клиентов у терминала без участия оператора: от проблем с кодом до залипших ячеек.</p>
+                    <div class="hero-btns">
+                        <button class="btn-primary">Попробовать демо</button>
+                        <button class="btn-secondary">Узнать больше</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="advantages">
+            <div class="container">
+                <h2 class="section-title">Почему выбирают нас?</h2>
+                <div class="adv-grid">
+                    <div class="adv-card">
+                        <i data-lucide="zap"></i>
+                        <h3>Мгновенный ответ</h3>
+                        <p>Среднее время реакции — 1.2 секунды. Клиенту не нужно ждать на линии.</p>
+                    </div>
+                    <div class="adv-card">
+                        <i data-lucide="shield-check"></i>
+                        <h3>Надежность</h3>
+                        <p>Автоматическая диагностика системы и уведомление технических служб.</p>
+                    </div>
+                    <div class="adv-card">
+                        <i data-lucide="trending-up"></i>
+                        <h3>Снижение затрат</h3>
+                        <p>Сокращение штата первой линии поддержки на 70% за счет автоматизации.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AI<span>Postman</span></div>
+                <p>&copy; 2026 Все права защищены. Разработано для Railway Cloud.</p>
+                <div class="footer-socials">
+                    <a href="#">TG</a>
+                    <a href="#">GH</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Инициализация иконок
+        lucide.createIcons();
+    </script>
+</body>
+</html>

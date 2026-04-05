@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Support — Чат поддержки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<div class="chat-container">
+    <header class="chat-header">
+        <a href="/" class="back-btn"><i data-lucide="chevron-left"></i></a>
+        <div class="bot-info">
+            <div class="avatar">AI</div>
+            <div>
+                <div class="name">Поддержка Постаматов</div>
+                <div class="status">В сети</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="message bot">
+            Привет! Опишите проблему с постаматом.
+        </div>
+    </div>
+
+    <form class="input-area" id="chatForm">
+        <input type="text" id="userInput" placeholder="Введите сообщение..." autocomplete="off">
+        <button type="submit">
+            <i data-lucide="send"></i>
+        </button>
+    </form>
+</div>
+
+<script>
+lucide.createIcons();
+
+const chatForm = document.getElementById('chatForm');
+const userInput = document.getElementById('userInput');
+const chatWindow = document.getElementById('chatWindow');
+
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const text = userInput.value.trim();
+    if (!text) return;
+
+    // сообщение пользователя
+    addMessage(text, 'user');
+    userInput.value = "";
+
+    // сообщение "думаю..."
+    const loadingMsg = addMessage("Анализирую...", 'bot');
+
+    try {
+        const response = await fetch('/send_message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+        });
+
+        const data = await response.json();
+
+        // заменяем loading сообщение
+        loadingMsg.remove();
+
+        const botText = `📌 Категория: ${data.category}
+📊 Уверенность: ${data.confidence}%`;
+
+        addMessage(botText, 'bot');
+
+    } catch (error) {
+        loadingMsg.remove();
+        addMessage("Ошибка сервера 😢", 'bot');
+    }
+});
+
+function addMessage(text, sender) {
+    const msg = document.createElement('div');
+    msg.className = `message ${sender}`;
+    msg.textContent = text;
+    chatWindow.appendChild(msg);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+    return msg;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+:root {
+    --primary: #2563eb;
+    --bg-chat: #f1f5f9;
+    --bot-msg: #ffffff;
+    --user-msg: #2563eb;
+    --text-dark: #1e293b;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-chat);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 500px;
+    height: 90vh;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.back-btn { color: var(--text-dark); text-decoration: none; }
+
+.bot-info { display: flex; align-items: center; gap: 10px; }
+
+.avatar {
+    width: 40px; height: 40px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.name { font-weight: 600; font-size: 16px; }
+.status { font-size: 12px; color: #10b981; }
+
+/* Chat Window */
+.chat-window {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #f8fafc;
+}
+
+.message {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.bot {
+    align-self: flex-start;
+    background: var(--bot-msg);
+    color: var(--text-dark);
+    border: 1px solid #e2e8f0;
+    border-bottom-left-radius: 4px;
+}
+
+.user {
+    align-self: flex-end;
+    background: var(--user-msg);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+/* Input Area */
+.input-area {
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus { border-color: var(--primary); }
+
+#sendBtn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+#sendBtn:hover { transform: scale(1.05); }
